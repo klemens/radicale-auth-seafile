@@ -43,8 +43,8 @@ class Auth(BaseAuth):
 
     def _get_db_connection(self):
         # Initial connect
-        if not hasattr(self, _db):
-            _db = _db_connect(uri)
+        if not hasattr(self, "_db"):
+            _db = self._db_connect()
 
         # Check if connection is alive and reconnect if not
         try:
@@ -52,7 +52,7 @@ class Auth(BaseAuth):
             test.execute("SELECT 1")
         except:
             self.logger.warning("Reconnect because of broken seafile db connection")
-            _db = _db_connect(uri)
+            _db = self._db_connect()
 
         return _db
 

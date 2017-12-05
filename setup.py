@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name = "radicale_auth_seafile",
-    version = "0.1.1",
+    version = "0.1.2",
     author = "Klemens Schölhorn",
     author_email = "klemens@schoelhorn.eu",
     description = (" Authenticate Radicale 2 requests against Seafile "),

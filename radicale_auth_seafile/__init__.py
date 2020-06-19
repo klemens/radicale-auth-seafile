@@ -3,11 +3,12 @@ from passlib.crypto.digest import pbkdf2_hmac
 from radicale.auth import BaseAuth
 
 class Auth(BaseAuth):
-    def is_authenticated(self, user, password):
+    def login(self, user, password):
         hash = self._read_hash(user)
         if hash is not None:
-            return self._check_pbkdf2sha256(password, hash)
-        return False
+            if self._check_pbkdf2sha256(password, hash):
+                return user
+        return ""
 
     def _check_pbkdf2sha256(self, password, hash):
         hashParts = hash.split("$")

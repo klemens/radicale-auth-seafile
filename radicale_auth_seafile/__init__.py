@@ -3,7 +3,7 @@ from passlib.crypto.digest import pbkdf2_hmac
 from radicale.auth import BaseAuth
 
 class Auth(BaseAuth):
-    def login(self, user, password):
+    def _login(self, user, password):
         hash = self._read_hash(user)
         if hash is not None:
             if self._check_pbkdf2sha256(password, hash):
